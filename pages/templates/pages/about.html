@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}About Pam | {% endblock %}
+
+
+{% block content %}
+<div class="container mt-3">
+  <div class="row">
+{#    <div class="col s4">#}
+{#    </div>#}
+{#    <div class="col s8">#}
+    <div class="col s12">
+{#      <img src="{% static 'images/Pamela_Haynes.jpg' %}" alt="" class="responsive-img">#}
+      <img src="{% static 'images/Pamela_Haynes.jpg' %}" alt="" style="width:200px;float:left;margin:1rem;">
+      <p>I have served 20 years on the Board of the Los Rios Community College District, most recently finishing up a fourth term as president, and during my tenure I’ve played an integral role in building Los Rios’ reputation as one of the nation’s best-run and most respected community college districts.</p>
+      <p>During my tenure with Los Rios, I have applied my skills, background, education, drive and network of allies to benefit the entire California community college system.</p>
+      <p>As a community college trustee, a member of the Community College League of California Board of Trustees and vice president of the Board of Governors for the California Community Colleges, I am all too familiar with the unprecedented challenges our institutions are facing: student success, access, affordability, productivity, retention, engaging under-represented students, serving veterans – the list goes on and on. But to simply identify our challenges is not enough. We must do more. We must work collaboratively and collectively to embrace them and overcome them, for the benefit of our students, our colleges, our state and our economy. And we must act quickly. With new limits and pressures on our students – repeatability, financial aid and caps on total units – we must really make the educational experience count while we’ve got our students enrolled and engaged.</p>
+      <p>My track record is one of commitment to and success in taking on challenges, no matter how seemingly intractable they might be, and solving them with teamwork, savvy and moxie. At the same time, I’m committed to finding the shimmering educational triumphs and accomplishments in our community colleges – such as reforming of basic skills courses, expanding co-requisite classes and imbedded tutors to complement our math and English classes, – and working to integrate and institutionalize these programs for the benefit of all of our students.</p>
+      <p>A proud Los Angeles native and product of California community colleges and the UC system (Santa Monica College and UCLA), my work experience at the California Legislature, state government, the private sector and labor unions has taught me the value of being a good listener, seeking consensus and building coalitions to get the job done – whatever that job might be.</p>
+      <p>Consider:</p>
+      <p>As a legislative director and policy analyst at the state Capitol, I researched and analyzed K-12, higher education, labor and workforce development issues and policies for the Assembly speaker and Democratic caucus. As a gubernatorial appointee to the California Employment Training Panel in 2002-2004, I served as a liaison to and voice for the small business community. As a legislative advocate for the California Labor Federation before that, I successfully built an alliance of supporters that helped shape and shepherd the nation’s first comprehensive paid family leave legislation, signed into law by then-Gov. Gray Davis. And as program director for Sacramento START in 1998-2000, I managed the expansion of a nationally recognized, literacy- focused after-school program that benefited more than 4,500 low-income, educationally- disadvantaged students in 37 schools across five school districts.</p>
+      <p>I am taking that hard-earned experience and lessons learned and applying them to the state’s 115 community colleges. My top priorities are clear and direct:</p>
+      <ul class="browser-default">
+        <li>To increase the number of credential awards;</li>
+        <li>To increase the number of transfers to four year institutions;</li>
+        <li>To reduce the number of accumulated units to better align with the 60 unit requirement for AA, AS and AD-T degrees;</li>
+        <li>To reduce the achievement gaps for historically under-represented students and students living in rural communities by 40 % in five years and fully close the achievement gaps within 10 years;</li>
+        <li>To scale up and integrate the most successful, data-proven basic skills and “student success” courses and programs; and,</li>
+        <li>To advocate for equity-focused policies (including increased funding, engagement and alignment with K-12, UC and CSU).</li>
+      </ul>
+      <p>Critical to meeting these commitments is the Guided Pathways Initiative, which is aimed at engaging administrators, faculty and staff to enact comprehensive changes to ensure that all courses are designed as part of a coherent pathway with a clear outcome.</p>
+      <p>But more importantly, we need to make a commitment to our students: to focus more intently on their experiences when designing programs and services, pairing high expectations with high support, including addressing gaps in basic skills before students arrive at a college campus, putting data analysis at the center of the program review process and taking ownership of goals and performance.</p>
+      <p>My promise is to work tirelessly, congenially and collaboratively as an advocate for all of California’s community college students and the colleges they attend.</p>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col s4 mb-3">
+      <img class="materialboxed responsive-img" src="{% static 'images/gallery/1.jpg' %}" alt="">
+    </div>
+    <div class="col s4 mb-3">
+      <img class="materialboxed responsive-img" src="{% static 'images/gallery/2.jpg' %}" alt="">
+    </div>
+    <div class="col s4 mb-3">
+      <img class="materialboxed responsive-img" src="{% static 'images/gallery/3.jpg' %}" alt="">
+    </div>
+    <div class="col s4 mb-3">
+      <img class="materialboxed responsive-img" src="{% static 'images/gallery/4.jpg' %}" alt="">
+    </div>
+    <div class="col s4 mb-3">
+      <img class="materialboxed responsive-img" src="{% static 'images/gallery/5.jpg' %}" alt="">
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+{% block additional_js %}
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.materialboxed');
+    var instances = M.Materialbox.init(elems);
+  });
+  </script>
+{% endblock %}

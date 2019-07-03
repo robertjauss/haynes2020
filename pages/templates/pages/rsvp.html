@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+
+{% block title %}RSVP | {% endblock %}
+
+
+{% block content %}
+  <div class="container mt-3 mb-3">
+    <div class="card horizontal">
+      <div class="card-image">
+        <img src="{{ event.image.url }}" alt="{{ event.name }}">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <p><b>WHAT:</b><br />{{ event.name }}</p>
+          <p>{{ event.description }}</p>
+          <p><b>WHERE:</b><br />{{ event.address_1 }}<br />
+          {% if event.address_2 %}
+            {{ event.address_2 }}<br />
+          {% endif %}
+          {{ event.city }}, {{ event.state }} {{ event.zip }}
+          </p>
+          <p><b>WHEN:</b><br />{{ event.date_start }} - {{ event.date_end | date:"P" }}</p>
+        </div>
+      </div>
+    </div>
+    <h3 class="center-align">Will you be coming?</h3>
+    <h4 class="center-align">RSVP below to show your support!</h4>
+    <form method="post">
+      {% csrf_token %}
+      <input type="hidden" name="event" id="id_event" value="{{ event.pk }}">
+      <div class="row">
+        <div class="input-field col s12 m6">
+          {{ form.email.errors }}
+          {{ form.email }}
+          {{ form.email.label_tag }}
+        </div>
+        <div class="input-field col s12 m6">
+          {{ form.mobile.errors }}
+          {{ form.mobile }}
+          <label for="{{ form.mobile.id_for_tag }}">Mobile Phone:</label>
+        </div>
+        <div class="input-field col s12 m6">
+          {{ form.first_name.errors }}
+          {{ form.first_name }}
+          {{ form.first_name.label_tag }}
+        </div>
+        <div class="input-field col s12 m6">
+          {{ form.last_name.errors }}
+          {{ form.last_name }}
+          {{ form.last_name.label_tag }}
+        </div>
+      </div>
+      <button class="btn success" type="submit">Submit</button>
+      <button class="btn white black-text" type="reset">Clear</button>
+    </form>
+  </div>
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+
+{% block title %}Support Pan | {% endblock %}
+
+
+{% block content %}
+<div class="row mb-0">
+  <div class="col s12 m6 l8 valign-wrapper" style="height: calc(100vh - 202px);">
+    <div class="container">
+      <h3 class="blue-text darken-1">Volunteer with Pam Haynes</h3>
+      <p><b>To win this election, it's going to take all of us volunteering our time and energy to elect Pam.</b> Fill out this form to get plugged in with volunteer opportunities related to your interests and skills.</p>
+    </div>
+  </div>
+  <div class="col s12 m6 l4 blue darken-1">
+    <form action="#" method="post" class="dark-form">
+      {% csrf_token %}
+      <div class="row">
+        <div class="input-field col s12">
+          {{ form.email.errors }}
+          {{ form.email }}
+          <label for="{{ form.email.id_for_label }}">Email Address*</label>
+        </div>
+        <div class="input-field col s12">
+          {{ form.first_name.errors }}
+          {{ form.first_name }}
+          <label for="{{ form.first_name.id_for_label }}">First Name*</label>
+        </div>
+        <div class="input-field col s12">
+          {{ form.last_name.errors }}
+          {{ form.last_name }}
+          <label for="{{ form.last_name.id_for_label }}">Last Name*</label>
+        </div>
+        <div class="input-field col s12">
+          {{ form.zip_code.errors }}
+          {{ form.zip_code }}
+          <label for="{{ form.zip_code.id_for_label }}">Zip Code*</label>
+        </div>
+        <div class="input-field col s12">
+          {{ form.mobile.errors }}
+          {{ form.mobile }}
+          <label for="{{ form.mobile.id_for_label }}">Mobile Phone</label>
+        </div>
+        <div class="col s12">
+          <p class="white-text">Which ways are you interested in helping the Pam Haynes election campaign?</p>
+          <p>
+            <label>
+              {{ form.host_attend_events }}
+              <span>Host or attend an event</span>
+            </label>
+          </p>
+          <p>
+            <label>
+              {{ form.knock_on_doors }}
+              <span>Knock on doors</span>
+            </label>
+          </p>
+          <p>
+            <label>
+              {{ form.make_calls }}
+              <span>Make calls</span>
+            </label>
+          </p>
+          <p>
+            <label>
+              {{ form.send_texts }}
+              <span>Send text messages</span>
+            </label>
+          </p>
+          <p>
+            <label>
+              {{ form.donate_skills }}
+              <span>Donate skills</span>
+            </label>
+          </p>
+          <p>
+            <label>
+              {{ form.pledge_to_donate }}
+              <span>Pledge to Donate</span>
+            </label>
+          </p>
+        </div>
+        <div class="col s12 center-align">
+          <button type="submit" class="btn btn-large success">Sign Up</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

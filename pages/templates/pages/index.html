@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+  <div class="mt-3">
+    <div class="row">
+      <div class="col s12 m8">
+        <img src="{% static 'images/PamHaynes.png' %}" class="responsive-img">
+      </div>
+      <div class="col s12 m4">
+        <a class="card-link" href="{% url 'area-5' %}#events">
+          <div class="card light-blue lighten-5">
+            <div class="card-content thin">
+              <span class="card-title indigo-text darken-4">FIND EVENTS</span>
+              <p>Rallies, meet-ups, and more</p>
+            </div>
+          </div>
+        </a>
+        <a class="card-link" href="https://registertovote.ca.gov/" target="_blank">
+          <div class="card light-blue lighten-5">
+            <div class="card-content thin">
+              <span class="card-title indigo-text darken-4">REGISTER TO VOTE</span>
+              <p>Make sure you're ready for election day</p>
+            </div>
+          </div>
+        </a>
+        <div class="card red lighten-5">
+          <div class="card-content thin">
+            <p class="donate-text">Make a quick donation here</p>
+            <div class="row valign-wrapper">
+              <div class="input-field col s8">
+                <input id="donate-amount" type="number">
+                <label for="donate-amount">Donation Amount</label>
+              </div>
+              <div class="col s4">
+                <button onclick="Donate()" class="btn waves-effect waves-light donate-btn">Donate</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+
+
+{% block additional_js %}
+<script>
+function Donate() {
+  var amount = document.getElementById("donate-amount").value;
+  window.open(`https://paypal.me/votepamhaynes2020/${amount}`);
+}
+</script>
+{% endblock %}

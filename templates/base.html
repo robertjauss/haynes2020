@@ -1,0 +1,66 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Damion&display=swap" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script defer src="{% static 'js/solid.min.js' %}"></script>
+    <script defer src="{% static 'js/fontawesome.min.js' %}"></script>
+    <title>{% block title %}{% endblock %}Pam Haynes for Area 5</title>
+    {% block additional_header %}{% endblock %}
+  </head>
+
+  <body>
+    <div class="top-header">
+      <div class="row mb-0">
+        <div class="col s6">
+          <h3 class="cursive">Pam Haynes</h3>
+          <h6>For Los Rios Board of Trustees, Area 5</h6>
+        </div>
+        <div class="col s6 right-align">
+          <div class="card left-align">
+            <div class="card-content thin">
+              <div class="row">
+                <div class="col s12">
+                  <span><b>SIGN UP</b> FOR EMAIL UPDATES</span>
+                </div>
+              </div>
+              <div class="row valign-wrapper">
+                <div class="input-field col s5">
+                  <input type="email" id="email" class="validate">
+                  <label for="email">Email</label>
+                </div>
+                <div class="input-field col s4">
+                  <input type="text" id="zip" class="validate">
+                  <label for="zip">ZIP</label>
+                </div>
+                <div class="col s3">
+                  <a href="#" class="btn dem-blue">Sign Up</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav>
+      <div class="nav-wrapper white black-text">
+        <ul id="nav-mobile" class="left hide-on-small-and-down">
+          <li class="{% if request.path == '/' %}active{% endif %}"><a href="{% url 'index' %}"><i class="fas fa-home fa-lg"></i></a></li>
+          <li class="{% if request.path == '/about/' %}active{% endif %}"><a href="{% url 'about' %}">About Pam</a></li>
+          <li class="{% if request.path == '/area-5/' %}active{% endif %}"><a href="{% url 'area-5' %}">Area 5</a></li>
+          <li class="{% if request.path == '/news-room/' %}active{% endif %}"><a href="{% url 'news-room' %}">News Room</a></li>
+          <li class="{% if request.path == '/support-pam/' %}active{% endif %}"><a href="{% url 'support-pam' %}">Support Pam</a></li>
+          <li class="{% if request.path == '/contribute/' %}active contribute{% endif %}"><a href="https://paypal.me/pamhaynes2020" target="_blank" class="donate-btn">CONTRIBUTE</a></li>
+        </ul>
+      </div>
+    </nav>
+    {% block content %}{% endblock %}
+    <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+    {% block additional_js %}{% endblock %}
+  </body>
+</html>
