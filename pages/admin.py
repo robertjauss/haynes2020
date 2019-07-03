@@ -15,3 +15,9 @@ class VolunteerAdmin(admin.ModelAdmin):
 @admin.register(RSVP)
 class RSVPAdmin(admin.ModelAdmin):
     list_display = ('__str__', 'email', 'contacted')
+
+
+@admin.register(NewsArticle)
+class ArticleAdmin(admin.ModelAdmin):
+    list_display = ('title', 'author', 'publish_date')
+    prepopulated_fields = {"slug": ("title",)}

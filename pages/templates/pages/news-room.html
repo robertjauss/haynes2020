@@ -1,1 +1,41 @@
 {% extends "base.html" %}
+
+
+{% block title %}News Room | {% endblock %}
+
+
+{% block content %}
+<div class="container mt-3">
+  <div class="row">
+    {% for article in object_list %}
+      {% if forloop.first %}
+        <div class="col s12">
+          <div class="card">
+            <div class="card-content">
+              <h5>{{ article.title }}</h5>
+              <h6>by {{ article.author }}, {{ article.publish_date }}</h6>
+              <p>{{ article.article|truncatewords:200 }}</p>
+            </div>
+            <div class="card-action">
+              <a class="blue-text text-darken-2" href="{% url 'article-detail' article.slug %}">Read more...</a>
+            </div>
+          </div>
+        </div>
+      {% else %}
+        <div class="col s12 m6 l4">
+          <div class="card medium">
+            <div class="card-content">
+              <h5>{{ article.title }}</h5>
+              <h6>by {{ article.author }}, {{ article.publish_date }}</h6>
+              <p>{{ article.article|truncatewords:50 }}</p>
+            </div>
+            <div class="card-action">
+              <a class="blue-text text-darken-2" href="{% url 'article-detail' article.pk %}">Read more...</a>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

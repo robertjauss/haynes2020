@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+
+{% block title %}{{ object.title }} | {% endblock %}
+
+
+{% block content %}
+<div class="container mt-3">
+  <div class="card">
+    <div class="card-content article">
+      <h3>{{ object.title }}</h3>
+      <h5>by {{ object.author }}</h5>
+      {% if object.image %}
+        <img src="{{ object.image.url }}" alt="" class="article-image">
+      {% endif %}
+      {{ object.article|linebreaks }}
+    </div>
+  </div>
+</div>
+{% endblock %}

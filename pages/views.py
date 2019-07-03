@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.views.generic.base import TemplateView
-from django.views.generic.edit import FormView, CreateView
-from .models import Event
+from django.views.generic.edit import CreateView
+from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
+from .models import Event, NewsArticle
 from .forms import VolunteerSignUpForm, RSVPForm
 from datetime import datetime
 
@@ -28,6 +30,17 @@ class Area5(TemplateView):
 
 def news_room(request):
     return render(request, "pages/news-room.html")
+
+
+class NewsRoom(ListView):
+    model = NewsArticle
+    template_name = "pages/news-room.html"
+    ordering = ['-publish_date']
+
+
+class ArticleDetail(DetailView):
+    model = NewsArticle
+    template_name = "pages/news-article.html"
 
 
 class SupportPam(CreateView):

@@ -135,3 +135,11 @@ nav ul li.active.contribute, nav ul li.active.contribute a {
     font-weight: bold;
     font-size: 1.25rem;
 }
+.article-image {
+    width: 200px;
+    float:left;
+    margin: 1rem;
+}
+.article p {
+    margin: 1rem 0 !important;
+}

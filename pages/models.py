@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.timezone import now
 
 
 class Event(models.Model):
@@ -47,3 +48,12 @@ class Volunteer(models.Model):
 
     def __str__(self):
         return f"{self.last_name}, {self.first_name}"
+
+
+class NewsArticle(models.Model):
+    title = models.CharField(max_length=200)
+    author = models.CharField(max_length=50)
+    article = models.TextField()
+    image = models.ImageField(upload_to="news", blank=True, null=True)
+    publish_date = models.DateField(default=now)
+    slug = models.SlugField()
