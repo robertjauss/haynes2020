@@ -7,10 +7,21 @@ from django.views.generic.detail import DetailView
 from .models import Event, NewsArticle
 from .forms import VolunteerSignUpForm, RSVPForm
 from datetime import datetime
+from django.utils.timezone import now
 
 
 def index(request):
     return render(request, "pages/index.html")
+
+
+class Index(TemplateView):
+    template_name = "pages/index.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(Index, self).get_context_data(**kwargs)
+        context['article'] = NewsArticle.objects.order_by('-publish_date')[0]
+        context['event'] = Event.objects.order_by('date_start').filter(date_start__gte=now())[0]
+        return context
 
 
 def about(request):
