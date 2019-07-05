@@ -39,7 +39,7 @@
     <div class="carousel carousel-slider">
       {% for image in carousel_images %}
         <div class="carousel-item">
-          <img src="{{ image.image_resized.url }}" alt="">
+          <img src="{{ image.image.url }}" alt="">
         </div>
       {% endfor %}
     </div>
