@@ -4,14 +4,10 @@ from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from .models import Event, NewsArticle
+from .models import Event, NewsArticle, CarouselImage
 from .forms import VolunteerSignUpForm, RSVPForm
 from datetime import datetime
 from django.utils.timezone import now
-
-
-def index(request):
-    return render(request, "pages/index.html")
 
 
 class Index(TemplateView):
@@ -26,6 +22,16 @@ class Index(TemplateView):
 
 def about(request):
     return render(request, "pages/about.html")
+
+
+class About(TemplateView):
+    template_name = "pages/about.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        carousel_images = CarouselImage.objects.filter(active=True)
+        context['carousel_images'] = carousel_images
+        return context
 
 
 class Area5(TemplateView):

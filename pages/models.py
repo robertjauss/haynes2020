@@ -1,5 +1,7 @@
 from django.db import models
 from django.utils.timezone import now
+from imagekit.models import ImageSpecField
+from imagekit.processors import ResizeToFit
 
 
 class Event(models.Model):
@@ -61,4 +63,9 @@ class NewsArticle(models.Model):
 
 class CarouselImage(models.Model):
     image = models.ImageField(upload_to="carousel")
+    image_resized = ImageSpecField(source='image',
+                                   processors=ResizeToFit(1920, 1080),
+                                   format='JPEG',
+                                   options={'quality': 85}
+                                   )
     active = models.BooleanField(default=True)

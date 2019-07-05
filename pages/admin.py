@@ -21,3 +21,8 @@ class RSVPAdmin(admin.ModelAdmin):
 class ArticleAdmin(admin.ModelAdmin):
     list_display = ('title', 'author', 'publish_date')
     prepopulated_fields = {"slug": ("title",)}
+
+
+@admin.register(CarouselImage)
+class CarouselAdmin(admin.ModelAdmin):
+    list_display = ('image', 'active')
