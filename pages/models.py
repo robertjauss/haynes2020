@@ -57,3 +57,8 @@ class NewsArticle(models.Model):
     image = models.ImageField(upload_to="news", blank=True, null=True)
     publish_date = models.DateField(default=now)
     slug = models.SlugField()
+
+
+class CarouselImage(models.Model):
+    image = models.ImageField(upload_to="carousel")
+    active = models.BooleanField(default=True)
