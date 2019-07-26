@@ -52,6 +52,11 @@
       <li><a class="{% if request.path == '/articles/' %}active{% endif %}" href="{% url 'articles' %}">Articles</a></li>
       <li><a class="{% if request.path == '/photo-album/' %}active{% endif %}" href="{% url 'photo-album' %}">Photo Album</a></li>
     </ul>
+    <ul class="dropdown-content" id="other-dropdown">
+      <li><a href="https://collegecampaign.org" target="_blank">College Campaign</a></li>
+      <li><a href="https://collegecampaign.org/portfolio/state-higher-education-black-californians/" target="_blank">The State of Higher Education for Black Californians</a></li>
+      <li><a href="https://collegecampaign.org/portfolio/state-higher-education-latinx-california/" target="_blank">The State of Higher Education for Latinx in California</a></li>
+    </ul>
     <nav>
       <div class="nav-wrapper white black-text">
         <ul id="nav-mobile" class="left hide-on-small-and-down">
@@ -61,6 +66,7 @@
           <li class="{% if request.path == '/events/' %}active{% endif %}"><a href="{% url 'events' %}">Events</a></li>
           <li><a class="dropdown-trigger" href="#!" data-target="newsroom-dropdown">News Room <i class="material-icons right">arrow_drop_down</i></a></li>
           <li class="{% if request.path == '/support-pam/' %}active{% endif %}"><a href="{% url 'support-pam' %}">Support Pam</a></li>
+          <li><a href="#!" data-target="other-dropdown" class="dropdown-trigger">Other Links <i class="material-icons right">arrow_drop_down</i></a></li>
           <li class="{% if request.path == '/contribute/' %}active contribute{% endif %}"><a href="https://paypal.me/votepamhaynes2020" target="_blank" class="donate-btn">CONTRIBUTE</a></li>
         </ul>
       </div>
