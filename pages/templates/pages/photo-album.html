@@ -8,10 +8,19 @@
 <div class="container mt-3">
   <div class="row">
     {% for photo in photos %}
-    <div class="col s12 m6 l4 xl3">
+    <div class="col s12 m6 l4 xl3 mb-4">
       <img class="materialboxed responsive-img" src="{{ photo.image.url }}" alt="">
     </div>
     {% endfor %}
   </div>
 </div>
+{% endblock %}
+
+{% block additional_js %}
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.materialboxed');
+    var instances = M.Materialbox.init(elems, options);
+  });
+  </script>
 {% endblock %}
