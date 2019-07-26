@@ -26,3 +26,9 @@ class ArticleAdmin(admin.ModelAdmin):
 @admin.register(CarouselImage)
 class CarouselAdmin(admin.ModelAdmin):
     list_display = ('image', 'active')
+
+
+@admin.register(Speech)
+class SpeechAdmin(admin.ModelAdmin):
+    list_display = ('title', 'author', 'publish_date')
+    prepopulated_fields = {'slug': ('title',)}
