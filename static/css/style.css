@@ -2,7 +2,7 @@
     background-color: #294473;
     color:white;
 }
-.top-header .card{
+.top-header .card {
     background-color: #334E79;
 }
 .cursive {
@@ -11,7 +11,7 @@
 .black-text>ul>li>a {
     color: black;
 }
-nav ul li.active, nav ul li.active a, .dem-blue {
+nav ul li.active, nav ul li.active a, .dem-blue, .dropdown-content li > a.active {
     background-color: #63B1F4;
     color: white !important;
 }
@@ -142,4 +142,7 @@ nav ul li.active.contribute, nav ul li.active.contribute a {
 }
 .article p {
     margin: 1rem 0 !important;
+}
+.dropdown-content li > a {
+    color: black;
 }

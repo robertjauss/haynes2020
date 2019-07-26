@@ -55,8 +55,19 @@ class Volunteer(models.Model):
 class NewsArticle(models.Model):
     title = models.CharField(max_length=200)
     author = models.CharField(max_length=50)
-    article = models.TextField()
+    article = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to="news", blank=True, null=True)
+    publish_date = models.DateField(default=now)
+    slug = models.SlugField()
+    pdf = models.FileField(upload_to="news", blank=True, null=True)
+    pdf_page = models.IntegerField(blank=True, null=True)
+
+
+class Speech(models.Model):
+    title = models.CharField(max_length=200)
+    author = models.CharField(max_length=50)
+    speech = models.TextField()
+    image = models.ImageField(upload_to="speech", blank=True, null=True)
     publish_date = models.DateField(default=now)
     slug = models.SlugField()
 

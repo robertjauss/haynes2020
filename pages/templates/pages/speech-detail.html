@@ -12,8 +12,6 @@
       <h5>by {{ object.author }}</h5>
       {% if object.image %}
         <img src="{{ object.image.url }}" alt="" class="article-image">
-      {% elif object.pdf %}
-        <iframe src="{{ object.pdf.url }}{% if object.pdf_page %}#page={{ object.pdf_page }}{% endif %}" frameborder="0" width="100%" height="800px"></iframe>
       {% endif %}
       {{ object.article|linebreaks }}
     </div>

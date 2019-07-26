@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+
+{% block title %}Events in Area 5{% endblock %}
+
+
+{% block content %}
+<div class="container mt-3">
+  <h3>Upcoming Events in Area 5</h3>
+  <div class="row">
+    {% for event in upcoming_events %}
+      <div class="col s12">
+        <div class="card horizontal">
+          <div class="card-image">
+            <a href="{{ event.image.url }}">
+              <img src="{{ event.image.url }}" alt="{{ event.name }}">
+            </a>
+          </div>
+          <div class="card-stacked">
+            <div class="card-content">
+              <p><b>WHAT:</b><br />{{ event.name }}</p>
+              <p>{{ event.description }}</p>
+              <p><b>WHERE:</b><br />{{ event.address_1 }}<br />
+              {% if event.address_2 %}
+                {{ event.address_2 }}<br />
+              {% endif %}
+              {{ event.city }}, {{ event.state }} {{ event.zip }}
+              </p>
+              <p><b>WHEN:</b><br />{{ event.date_start }} - {{ event.date_end | date:"P" }}</p>
+              <a href="{% url 'rsvp' event.pk %}" class="btn blue lighten-2 mt-3">RSVP</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <h4>No upcoming events!</h4>
+    {% endfor %}
+  </div>
+  <hr />
+  <h3>Past Events</h3>
+  {% for event in past_events %}
+    <div class="col s12">
+      <div class="card horizontal">
+        <div class="card-image">
+          <a href="{{ event.image.url }}">
+            <img src="{{ event.image.url }}" alt="{{ event.name }}">
+          </a>
+        </div>
+        <div class="card-stacked">
+          <div class="card-content">
+            <p><b>WHAT:</b><br />{{ event.name }}</p>
+            <p>{{ event.description }}</p>
+            <p><b>WHERE:</b><br />{{ event.address_1 }}<br />
+            {% if event.address_2 %}
+              {{ event.address_2 }}<br />
+            {% endif %}
+            {{ event.city }}, {{ event.state }} {{ event.zip }}
+            </p>
+            <p><b>WHEN:</b><br />{{ event.date_start }} - {{ event.date_end | date:"P" }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <h4>No past events!</h4>
+  {% endfor %}
+</div>
+{% endblock %}

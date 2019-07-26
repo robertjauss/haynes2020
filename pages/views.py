@@ -1,10 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from .models import Event, NewsArticle, CarouselImage
+from .models import Event, NewsArticle, CarouselImage, Speech
 from .forms import VolunteerSignUpForm, RSVPForm
 from datetime import datetime
 from django.utils.timezone import now
@@ -14,9 +13,15 @@ class Index(TemplateView):
     template_name = "pages/index.html"
 
     def get_context_data(self, **kwargs):
-        context = super(Index, self).get_context_data(**kwargs)
-        context['article'] = NewsArticle.objects.order_by('-publish_date')[0]
-        context['event'] = Event.objects.order_by('date_start').filter(date_start__gte=now())[0]
+        context = super().get_context_data(**kwargs)
+        try:
+            context['article'] = NewsArticle.objects.order_by('-publish_date')[0]
+        except IndexError:
+            context['article'] = None
+        try:
+            context['event'] = Event.objects.order_by('date_start').filter(date_start__gte=now())[0]
+        except IndexError:
+            context['event'] = None
         return context
 
 
@@ -34,22 +39,22 @@ class About(TemplateView):
         return context
 
 
-class Area5(TemplateView):
-    template_name = "pages/area-5.html"
+def area5(request):
+    return render(request, "pages/area-5.html")
+
+
+class Events(TemplateView):
+    template_name = "pages/events.html"
 
     def get_context_data(self, **kwargs):
-        context = super(Area5, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         events = Event.objects.all()
         context['upcoming_events'] = events.filter(date_end__gt=datetime.now())
         context['past_events'] = events.filter(date_end__lt=datetime.now())
         return context
 
 
-def news_room(request):
-    return render(request, "pages/news-room.html")
-
-
-class NewsRoom(ListView):
+class Articles(ListView):
     model = NewsArticle
     template_name = "pages/news-room.html"
     ordering = ['-publish_date']
@@ -58,6 +63,26 @@ class NewsRoom(ListView):
 class ArticleDetail(DetailView):
     model = NewsArticle
     template_name = "pages/news-article.html"
+
+
+class Speeches(ListView):
+    model = Speech
+    template_name = "pages/speeches.html"
+    ordering = ['-publish_date']
+
+
+class SpeechDetail(DetailView):
+    model = Speech
+    template_name = "pages/speech-detail.html"
+
+
+class PhotoAlbum(TemplateView):
+    template_name = "pages/photo-album.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['photos'] = CarouselImage.objects.all()
+        return context
 
 
 class SupportPam(CreateView):
