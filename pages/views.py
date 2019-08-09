@@ -48,7 +48,7 @@ class Events(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        events = Event.objects.all()
+        events = Event.objects.order_by('-date_start')
         context['upcoming_events'] = events.filter(date_end__gt=datetime.now())
         context['past_events'] = events.filter(date_end__lt=datetime.now())
         return context
