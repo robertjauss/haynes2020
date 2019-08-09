@@ -148,10 +148,9 @@ nav ul li.active.contribute, nav ul li.active.contribute a {
 }
 .photo-album-img {
     width: 239px;
-    height: 159px;
     object-fit: cover;
 }
-.photo-album-img.active {
-    width: 100%;
-    height: auto;
+.photo-album-grid {
+    height: 160px;
+    overflow: hidden;
 }
