@@ -25,7 +25,8 @@ class ArticleAdmin(admin.ModelAdmin):
 
 @admin.register(CarouselImage)
 class CarouselAdmin(admin.ModelAdmin):
-    list_display = ('image', 'active')
+    list_display = ('image', 'order', 'active')
+    list_editable = ('order',)
 
 
 @admin.register(Speech)
