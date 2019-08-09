@@ -78,3 +78,4 @@ class CarouselImage(models.Model):
                                 format='JPEG',
                                 options={'quality': 90})
     active = models.BooleanField(default=False)
+    order = models.SmallIntegerField()
