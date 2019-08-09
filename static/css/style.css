@@ -146,3 +146,11 @@ nav ul li.active.contribute, nav ul li.active.contribute a {
 .dropdown-content li > a {
     color: black;
 }
+.photo-album-img {
+    object-fit: fill;
+}
+.material-placeholder {
+    max-width: 239px;
+    max-height: 159px;
+    overflow: hidden;
+}
