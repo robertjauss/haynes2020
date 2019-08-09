@@ -149,8 +149,11 @@ nav ul li.active.contribute, nav ul li.active.contribute a {
 .photo-album-img {
     object-fit: fill;
 }
-.material-placeholder {
+.material-placeholder  {
     max-width: 239px;
     max-height: 159px;
     overflow: hidden;
+}
+.material-placeholder < img.active {
+    overflow: initial;
 }
