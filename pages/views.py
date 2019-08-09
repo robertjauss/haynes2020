@@ -81,7 +81,7 @@ class PhotoAlbum(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['photos'] = CarouselImage.objects.all()
+        context['photos'] = CarouselImage.objects.order_by('order')
         return context
 
 
