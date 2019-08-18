@@ -53,7 +53,7 @@ class Volunteer(models.Model):
 
 
 class NewsArticle(models.Model):
-    title = models.CharField(max_length=200)
+    title = models.TextField()
     author = models.CharField(max_length=50)
     article = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to="news", blank=True, null=True)
@@ -64,7 +64,7 @@ class NewsArticle(models.Model):
 
 
 class Speech(models.Model):
-    title = models.CharField(max_length=200)
+    title = models.TextField()
     author = models.CharField(max_length=50)
     speech = models.TextField()
     image = models.ImageField(upload_to="speech", blank=True, null=True)
