@@ -12,7 +12,7 @@
         <div class="col s12">
           <div class="card">
             <div class="card-content">
-              <h5>{{ article.title }}</h5>
+              <h5>{{ article.title|linebreaks }}</h5>
               <h6>by {{ article.author }}, {{ article.publish_date }}</h6>
               <p>{{ article.article|truncatewords:200 }}</p>
             </div>
@@ -25,7 +25,7 @@
         <div class="col s12 m6">
           <div class="card medium">
             <div class="card-content">
-              <h5>{{ article.title }}</h5>
+              <h5>{{ article.title|linebreaks }}</h5>
               <h6>by {{ article.author }}, {{ article.publish_date }}</h6>
               <p>{{ article.article|truncatewords:50 }}</p>
             </div>
