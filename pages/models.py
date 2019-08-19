@@ -79,3 +79,8 @@ class CarouselImage(models.Model):
                                 options={'quality': 90})
     active = models.BooleanField(default=False)
     order = models.SmallIntegerField()
+
+
+class EmailSignup(models.Model):
+    email = models.EmailField(unique=True)
+    zip_code = models.CharField(max_length=5)

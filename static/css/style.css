@@ -99,7 +99,7 @@ nav ul li.active.contribute, nav ul li.active.contribute a {
 .p-5 {
     padding: 3rem;
 }
-.dark-form input, label>span {
+.dark-form input {
     color: white;
 }
 .dark-form input[type="email"]:not(.browser-default):focus:not([readonly]) {
@@ -153,4 +153,8 @@ nav ul li.active.contribute, nav ul li.active.contribute a {
 .photo-album-grid {
     height: 160px;
     overflow: hidden;
+}
+.donate-radio {
+    color: black;
+    font-weight: bold;
 }

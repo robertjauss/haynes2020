@@ -15,5 +15,6 @@ urlpatterns = [
     path("support-pam/thanks/", support_thanks_view, name="support-thanks"),
     path("contribute/", contribute, name="contribute"),
     path("rsvp/<int:pk>", RSVPView.as_view(), name="rsvp"),
-    path("rsvp/thanks/", rsvp_thanks_view, name="rsvp-thanks")
+    path("rsvp/thanks/", rsvp_thanks_view, name="rsvp-thanks"),
+    path("emailsignup/", email_signup, name="email_signup")
 ]

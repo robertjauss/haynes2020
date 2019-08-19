@@ -33,3 +33,8 @@ class CarouselAdmin(admin.ModelAdmin):
 class SpeechAdmin(admin.ModelAdmin):
     list_display = ('title', 'author', 'publish_date')
     prepopulated_fields = {'slug': ('title',)}
+
+
+@admin.register(EmailSignup)
+class EmailSignupAdmin(admin.ModelAdmin):
+    list_display = ('email', 'zip_code')

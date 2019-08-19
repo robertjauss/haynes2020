@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Volunteer, RSVP, Event
+from .models import Volunteer, RSVP, Event, EmailSignup
 
 
 class VolunteerSignUpForm(ModelForm):
@@ -12,3 +12,9 @@ class RSVPForm(ModelForm):
     class Meta:
         model = RSVP
         exclude = ['contacted', 'notes']
+
+
+class EmailForm(ModelForm):
+    class Meta:
+        model = EmailSignup
+        exclude = []

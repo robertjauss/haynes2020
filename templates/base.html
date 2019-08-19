@@ -9,6 +9,7 @@
     <link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <script defer src="{% static 'js/solid.min.js' %}"></script>
+    <script defer src="{% static 'js/brands.min.js' %}"></script>
     <script defer src="{% static 'js/fontawesome.min.js' %}"></script>
     <title>{% block title %}{% endblock %}Pam Haynes for Area 5</title>
     {% block additional_header %}{% endblock %}
@@ -17,11 +18,11 @@
   <body>
     <div class="top-header">
       <div class="row mb-0">
-        <div class="col s6">
+        <div class="col s12 m6">
           <h3 class="cursive">Pam Haynes</h3>
           <h6>For Los Rios Board of Trustees, Area 5</h6>
         </div>
-        <div class="col s6 right-align">
+        <div class="col m6 right-align hide-on-small-and-down">
           <div class="card left-align">
             <div class="card-content thin">
               <div class="row">
@@ -30,17 +31,19 @@
                 </div>
               </div>
               <div class="row valign-wrapper">
-                <div class="input-field col s5">
-                  <input type="email" id="email" class="validate">
-                  <label for="email">Email</label>
-                </div>
-                <div class="input-field col s4">
-                  <input type="text" id="zip" class="validate">
-                  <label for="zip">ZIP</label>
-                </div>
-                <div class="col s3">
-                  <a href="#" class="btn dem-blue">Sign Up</a>
-                </div>
+                <form action="#" onsubmit="submitForm();return false;" id="email-form">
+                  <div class="input-field col s5">
+                    <input type="email" id="email" class="validate" name="email" style="color: white;">
+                    <label for="email">Email</label>
+                  </div>
+                  <div class="input-field col s4">
+                    <input type="text" id="zip_code" class="validate" name="zip_code" style="color: white;">
+                    <label for="zip">ZIP</label>
+                  </div>
+                  <div class="col s3">
+                    <button type="submit" class="btn dem-blue">Sign Up</button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
@@ -59,6 +62,7 @@
     </ul>
     <nav>
       <div class="nav-wrapper white black-text">
+        <a href="#" data-target="side-nav" class="sidenav-trigger valign-wrapper" style="color: black"><i class="fas fa-bars fa-3x"></i></a>
         <ul id="nav-mobile" class="left hide-on-small-and-down">
           <li class="{% if request.path == '/' %}active{% endif %}"><a href="{% url 'index' %}"><i class="fas fa-home fa-lg"></i></a></li>
           <li class="{% if request.path == '/about/' %}active{% endif %}"><a href="{% url 'about' %}">About Pam</a></li>
@@ -71,13 +75,37 @@
         </ul>
       </div>
     </nav>
+    <ul class="sidenav" id="side-nav">
+      <li class="{% if request.path == '/' %}active{% endif %}"><a href="{% url 'index' %}"><i class="fas fa-home fa-lg"></i></a></li>
+          <li class="{% if request.path == '/about/' %}active{% endif %}"><a href="{% url 'about' %}">About Pam</a></li>
+          <li class="{% if request.path == '/area-5/' %}active{% endif %}"><a href="{% url 'area-5' %}">Area 5</a></li>
+          <li class="{% if request.path == '/events/' %}active{% endif %}"><a href="{% url 'events' %}">Events</a></li>
+          <li><a class="dropdown-trigger" href="#!" data-target="newsroom-dropdown">News Room <i class="material-icons right">arrow_drop_down</i></a></li>
+          <li class="{% if request.path == '/support-pam/' %}active{% endif %}"><a href="{% url 'support-pam' %}">Support Pam</a></li>
+          <li><a href="#!" data-target="other-dropdown" class="dropdown-trigger">Other Links <i class="material-icons right">arrow_drop_down</i></a></li>
+          <li class="{% if request.path == '/contribute/' %}active contribute{% endif %}"><a href="https://paypal.me/votepamhaynes2020" target="_blank" class="donate-btn">CONTRIBUTE</a></li>
+    </ul>
     {% block content %}{% endblock %}
     <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.sidenav');
+      var instances = M.Sidenav.init(elems);
+    });
+    document.addEventListener('DOMContentLoaded', function() {
       var elems = document.querySelectorAll('.dropdown-trigger');
       var instances = M.Dropdown.init(elems, {coverTrigger: false});
     });
+    function submitForm() {
+      var form = new FormData(document.getElementById('email-form'));
+      fetch("/emailsignup/", {
+        method: 'post',
+        credentials: 'same-origin',
+        body: form
+      }).then(res => res.json())
+      .then(response => M.toast({html: response['message']}))
+      .catch(error => console.error('Error:', error));
+    }
     </script>
     {% block additional_js %}{% endblock %}
   </body>

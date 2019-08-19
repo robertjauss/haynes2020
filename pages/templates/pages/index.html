@@ -9,7 +9,7 @@
         <img src="{% static 'images/PamHaynes.jpg' %}" class="responsive-img">
       </div>
       <div class="col s12 m4">
-        <a class="card-link" href="{% url 'area-5' %}#events">
+        <a class="card-link" href="{% url 'events' %}#events">
           <div class="card light-blue lighten-5">
             <div class="card-content thin">
               <span class="card-title indigo-text darken-4">FIND EVENTS</span>
@@ -29,12 +29,41 @@
           <div class="card-content thin">
             <p class="donate-text">Make a quick donation here</p>
             <div class="row valign-wrapper">
-              <div class="input-field col s8">
-                <input id="donate-amount" type="number">
-                <label for="donate-amount">Donation Amount</label>
+              <div class="col s7 m6 l4">
+                <p>
+                  <label class="donate-radio">
+                    <input name="donate" type="radio" value="50" checked />
+                    <span>$50</span>
+                  </label>
+                </p>
+                <p>
+                  <label class="donate-radio">
+                    <input name="donate" type="radio" value="100" />
+                    <span>$100</span>
+                  </label>
+                </p>
+                <p>
+                  <label class="donate-radio">
+                    <input name="donate" type="radio" value="150" />
+                    <span>$150</span>
+                  </label>
+                </p>
+                <p>
+                  <label class="donate-radio">
+                    <input name="donate" type="radio" value="250" />
+                    <span>$250</span>
+                  </label>
+                </p>
+                <p>
+                  <label class="donate-radio">
+                    <input name="donate" type="radio" value="" />
+                    <span>Other</span>
+                  </label>
+                </p>
               </div>
-              <div class="col s4">
-                <button onclick="Donate()" class="btn waves-effect waves-light donate-btn">Donate</button>
+              <div class="col s5 m6 l8">
+                <button onclick="Donate()" class="btn waves-effect waves-light donate-btn"><i class="fab fa-paypal fa-lg fa-fw"></i> Donate via PayPal</button>
+                <button data-target="checkmodal" class="btn waves-effect waves-light donate-btn modal-trigger mt-3"><i class="fas fa-money-check fa-lg fa-fw"></i> Donate via Check</button>
               </div>
             </div>
           </div>
@@ -48,7 +77,7 @@
         {% if article %}
         <div class="card">
           <div class="card-content">
-            <h5>{{ article.title }}</h5>
+            <h5>{{ article.title|linebreaks }}</h5>
             <h6>by {{ article.author }}, {{ article.publish_date }}</h6>
             <p>{{ article.article|truncatewords:200 }}</p>
           </div>
@@ -81,11 +110,27 @@
           </div>
           <div class="card-action">
             <a href="{% url 'rsvp' event.pk %}" class="blue-text text-darken-2">RSVP</a>
-            <a href="{% url 'area-5' %}#events" class="blue-text text-darken-2">More Events</a>
+            <a href="{% url 'events' %}#events" class="blue-text text-darken-2">More Events</a>
           </div>
         </div>
       {% endif %}
       </div>
+    </div>
+  </div>
+  <div id="checkmodal" class="modal">
+    <div class="modal-content">
+      <h4>Donate by Check</h4>
+      <p>If you would like to donate to the campaign, you can use PayPal or you can mail a check to:</p>
+      <p>Friends of Pam Haynes for Los Rios 2020<br>
+      1169 Brownwyk Drive<br>
+      Sacramento, CA 95822</p>
+      <p><i><b><u>Please note your work status:</u></b><br>
+      -  your employer and your job title<br>
+      &nbsp;&nbsp;or<br>
+      -  self-employed<br>
+      &nbsp;&nbsp;or<br>
+      -  retired</i></p>
+      <p>If you have questions, please contact (916) 752-5860</p>
     </div>
   </div>
 
@@ -94,9 +139,17 @@
 
 {% block additional_js %}
 <script>
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.modal');
+  var instances = M.Modal.init(elems);
+});
 function Donate() {
-  var amount = document.getElementById("donate-amount").value;
-  window.open(`https://paypal.me/votepamhaynes2020/${amount}`);
+  let elems = document.getElementsByName("donate");
+  for(let i = 0; i < elems.length; i++) {
+    if (elems[i].checked) {
+      window.open(`https://paypal.me/votepamhaynes2020/${elems[i].value}`);
+    }
+  }
 }
 </script>
 {% endblock %}

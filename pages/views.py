@@ -1,12 +1,15 @@
-from django.shortcuts import render
+from .models import Event, NewsArticle, CarouselImage, Speech, EmailSignup
+from django.views.decorators.csrf import csrf_exempt
 from django.views.generic.base import TemplateView
+from django.views.generic.detail import DetailView
+from .forms import VolunteerSignUpForm, RSVPForm, EmailForm
 from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
-from django.views.generic.detail import DetailView
-from .models import Event, NewsArticle, CarouselImage, Speech
-from .forms import VolunteerSignUpForm, RSVPForm
-from datetime import datetime
 from django.utils.timezone import now
+from django.http import JsonResponse
+from django.shortcuts import render
+from datetime import datetime
+import json
 
 
 class Index(TemplateView):
@@ -112,3 +115,19 @@ class RSVPView(CreateView):
 
 def rsvp_thanks_view(request):
     return render(request, "pages/rsvp_thanks.html")
+
+
+@csrf_exempt
+def email_signup(request):
+    if request.method == "POST":
+        form = EmailForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return JsonResponse({"message": "Success! Thank you for signing up, we'll be in contact with news and"
+                                            " events in the coming days"}, status=201)
+        else:
+            if form.errors.as_data().get('email', False):
+                message = f"Error with email: {form.errors.as_data().get('email')[0]}"
+            else:
+                message = f"Error with zip code: {form.errors.as_data().get('zip_code')[0]}"
+            return JsonResponse({"message": message}, status=400)
