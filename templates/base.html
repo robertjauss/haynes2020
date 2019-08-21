@@ -22,7 +22,7 @@
           <h3 class="cursive">Pam Haynes</h3>
           <h6>For Los Rios Board of Trustees, Area 5</h6>
         </div>
-        <div class="col m6 right-align hide-on-small-and-down">
+        <div class="col m6 right-align hide-on-med-and-down">
           <div class="card left-align">
             <div class="card-content thin">
               <div class="row">
@@ -55,10 +55,20 @@
       <li><a class="{% if request.path == '/articles/' %}active{% endif %}" href="{% url 'articles' %}">Articles</a></li>
       <li><a class="{% if request.path == '/photo-album/' %}active{% endif %}" href="{% url 'photo-album' %}">Photo Album</a></li>
     </ul>
+    <ul id="newsroom-mobile-dropdown" class="dropdown-content">
+      <li><a class="{% if request.path == '/speeches/' %}active{% endif %}" href="{% url 'speeches' %}">Speeches</a></li>
+      <li><a class="{% if request.path == '/articles/' %}active{% endif %}" href="{% url 'articles' %}">Articles</a></li>
+      <li><a class="{% if request.path == '/photo-album/' %}active{% endif %}" href="{% url 'photo-album' %}">Photo Album</a></li>
+    </ul>
     <ul class="dropdown-content" id="other-dropdown">
       <li><a href="https://collegecampaign.org" target="_blank">Campaign for College Opportunity</a></li>
       <li><a href="https://collegecampaign.org/portfolio/state-higher-education-black-californians/" target="_blank">The State of Higher Education for Black Californians</a></li>
       <li><a href="https://collegecampaign.org/portfolio/state-higher-education-latinx-california/" target="_blank">The State of Higher Education for Latinx in California</a></li>
+    </ul>
+    <ul class="dropdown-content" id="other-mobile-dropdown">
+      <li><a class="truncate" href="https://collegecampaign.org" target="_blank">Campaign for College Opportunity</a></li>
+      <li><a class="truncate" href="https://collegecampaign.org/portfolio/state-higher-education-black-californians/" target="_blank">The State of Higher Education for Black Californians</a></li>
+      <li><a class="truncate" href="https://collegecampaign.org/portfolio/state-higher-education-latinx-california/" target="_blank">The State of Higher Education for Latinx in California</a></li>
     </ul>
     <nav>
       <div class="nav-wrapper white black-text">
@@ -80,9 +90,9 @@
           <li class="{% if request.path == '/about/' %}active{% endif %}"><a href="{% url 'about' %}">About Pam</a></li>
           <li class="{% if request.path == '/area-5/' %}active{% endif %}"><a href="{% url 'area-5' %}">Area 5</a></li>
           <li class="{% if request.path == '/events/' %}active{% endif %}"><a href="{% url 'events' %}">Events</a></li>
-          <li><a class="dropdown-trigger" href="#!" data-target="newsroom-dropdown">News Room <i class="material-icons right">arrow_drop_down</i></a></li>
+          <li><a class="dropdown-trigger" href="#!" data-target="newsroom-mobile-dropdown">News Room <i class="material-icons right">arrow_drop_down</i></a></li>
           <li class="{% if request.path == '/support-pam/' %}active{% endif %}"><a href="{% url 'support-pam' %}">Support Pam</a></li>
-          <li><a href="#!" data-target="other-dropdown" class="dropdown-trigger">Other Links <i class="material-icons right">arrow_drop_down</i></a></li>
+          <li><a href="#!" data-target="other-mobile-dropdown" class="dropdown-trigger">Other Links <i class="material-icons right">arrow_drop_down</i></a></li>
           <li class="{% if request.path == '/contribute/' %}active contribute{% endif %}"><a href="https://paypal.me/votepamhaynes2020" target="_blank" class="donate-btn">CONTRIBUTE</a></li>
     </ul>
     {% block content %}{% endblock %}
