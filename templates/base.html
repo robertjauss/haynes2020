@@ -73,7 +73,7 @@
     <nav>
       <div class="nav-wrapper white black-text">
         <a href="#" data-target="side-nav" class="sidenav-trigger valign-wrapper" style="color: black"><i class="fas fa-bars fa-3x"></i></a>
-        <ul id="nav-mobile" class="left hide-on-small-and-down">
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
           <li class="{% if request.path == '/' %}active{% endif %}"><a href="{% url 'index' %}"><i class="fas fa-home fa-lg"></i></a></li>
           <li class="{% if request.path == '/about/' %}active{% endif %}"><a href="{% url 'about' %}">About Pam</a></li>
           <li class="{% if request.path == '/area-5/' %}active{% endif %}"><a href="{% url 'area-5' %}">Area 5</a></li>
