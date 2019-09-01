@@ -45,6 +45,9 @@ nav ul li.active.contribute, nav ul li.active.contribute a {
     text-decoration: none;
     color: inherit;
 }
+.top-header h2 {
+    margin-top: 1rem;
+}
 .mb-0 {
     margin-bottom: 0;
 }
