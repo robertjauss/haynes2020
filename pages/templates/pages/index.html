@@ -28,42 +28,44 @@
         <div class="card red lighten-5">
           <div class="card-content thin">
             <p class="donate-text">Make a quick donation here</p>
-            <div class="row valign-wrapper">
-              <div class="col s7 m6 l4">
-                <p>
-                  <label class="donate-radio">
-                    <input name="donate" type="radio" value="50" checked />
-                    <span>$50</span>
-                  </label>
-                </p>
-                <p>
-                  <label class="donate-radio">
-                    <input name="donate" type="radio" value="100" />
-                    <span>$100</span>
-                  </label>
-                </p>
-                <p>
-                  <label class="donate-radio">
-                    <input name="donate" type="radio" value="150" />
-                    <span>$150</span>
-                  </label>
-                </p>
-                <p>
-                  <label class="donate-radio">
-                    <input name="donate" type="radio" value="250" />
-                    <span>$250</span>
-                  </label>
-                </p>
-                <p>
-                  <label class="donate-radio">
-                    <input name="donate" type="radio" value="" />
-                    <span>Other</span>
-                  </label>
-                </p>
-              </div>
-              <div class="col s5 m6 l8">
-                <button onclick="Donate()" class="btn waves-effect waves-light donate-btn"><i class="fab fa-paypal fa-lg fa-fw"></i> Donate via PayPal</button>
-                <button data-target="checkmodal" class="btn waves-effect waves-light donate-btn modal-trigger mt-3"><i class="fas fa-money-check fa-lg fa-fw"></i> Donate via Check</button>
+            <div class="row">
+              <div class="valign-wrapper">
+                <div class="col s12 m6 l4">
+                  <p>
+                    <label class="donate-radio">
+                      <input name="donate" type="radio" value="50" checked />
+                      <span>$50</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label class="donate-radio">
+                      <input name="donate" type="radio" value="100" />
+                      <span>$100</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label class="donate-radio">
+                      <input name="donate" type="radio" value="150" />
+                      <span>$150</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label class="donate-radio">
+                      <input name="donate" type="radio" value="250" />
+                      <span>$250</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label class="donate-radio">
+                      <input name="donate" type="radio" value="" />
+                      <span>Other</span>
+                    </label>
+                  </p>
+                </div>
+                <div class="col s12 m6 l8">
+                  <button onclick="Donate()" class="btn waves-effect waves-light donate-btn"><i class="fab fa-paypal fa-lg fa-fw"></i> Donate via PayPal</button>
+                  <button data-target="checkmodal" class="btn waves-effect waves-light donate-btn modal-trigger mt-3"><i class="fas fa-money-check fa-lg fa-fw"></i> Donate via Check</button>
+                </div>
               </div>
             </div>
           </div>
@@ -72,7 +74,7 @@
       <div class="col s12">
         <hr>
       </div>
-      <div class="col s12 m8">
+      <div class="col s12 m6">
         <h4>Latest News</h4>
         {% if article %}
         <div class="card">
@@ -88,32 +90,30 @@
         </div>
         {% endif %}
       </div>
-      <div class="col s12 m4">
-        <h4>Upcoming event</h4>
-        {% if event %}
+      <div class="col s12 m6">
+        <h4>Endorsements</h4>
         <div class="card">
-          <div class="card-image">
-            <a href="{{ event.image.url }}">
-              <img src="{{ event.image.url }}" alt="{{ event.name }}">
-            </a>
-          </div>
           <div class="card-content">
-            <p><b>WHAT:</b><br />{{ event.name }}</p>
-            <p>{{ event.description }}</p>
-            <p><b>WHERE:</b><br />{{ event.address_1 }}<br />
-            {% if event.address_2 %}
-              {{ event.address_2 }}<br />
-            {% endif %}
-            {{ event.city }}, {{ event.state }} {{ event.zip }}
-            </p>
-            <p><b>WHEN:</b><br />{{ event.date_start }} - {{ event.date_end | date:"P" }}</p>
-          </div>
-          <div class="card-action">
-            <a href="{% url 'rsvp' event.pk %}" class="blue-text text-darken-2">RSVP</a>
-            <a href="{% url 'events' %}#events" class="blue-text text-darken-2">More Events</a>
+            <ul class="browser-default">
+              <li>Black Women Organized for Political Caucus – Sacramento</li>
+              <li>Cassandra Jennings, CEO Sacramento Urban League</li>
+              <li>Councilmember Eric Guerra</li>
+              <li>Councilmember Rick Jennings</li>
+              <li>Deborah Ortiz, Trustee, Los Rios Community College District Board</li>
+              <li>Democratic Party of Sacramento County</li>
+              <li>Fem Dems</li>
+              <li>Harry S. Truman Club</li>
+              <li>Jessie Ryan, Sacramento Unified School District Board</li>
+              <li>Laborers' Union, Local 185</li>
+              <li>Latino Democratic Club</li>
+              <li>National Women's Political Action - Sacramento</li>
+              <li>Sacramento Environmental Democratic Club</li>
+              <li>Sacramento Labor Council</li>
+              <li>Sacramento - Sierra Construction & Building Trades Council</li>
+              <li>Tami Nelson, Trustee, Los Rios Community College District Board</li>
+            </ul>
           </div>
         </div>
-      {% endif %}
       </div>
     </div>
   </div>
